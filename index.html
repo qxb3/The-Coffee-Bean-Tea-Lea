@@ -5,10 +5,85 @@
     <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Coffee Bean & Tea Leaf</title>
+
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <header class="header">
+        <nav class="container">
+          <div class="brand">
+            <i class="far fa-mug-hot fa-lg"></i>
+          </div>
+
+          <ul class="links">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/about">Products</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/resources">Resources</a></li>
+          </ul>
+
+          <div class="cart">
+            <i class="far fa-shopping-cart"></i>
+          </div>
+        </nav>
+
+        <div class="hero">
+          <img class="grinder" src="/images/coffee-grinder.png" />
+          <img class="cup" src="/images/coffee-cup.png" />
+
+          <div class="contents">
+            <h1>The best quality coffee beans <br>for the best coffee brew</h1>
+            <p>A cup is enough to give you energy <br>all day long</p>
+            <button>Order Now</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="products">
+        <div class="container">
+          <h3>Best Products</h3>
+
+          <div class="items">
+            <div class="item">
+              <div class="pic">
+                <img src="/images/coffees/mocha.png" style="width: 6rem;" />
+              </div>
+              <div class="info">
+                <h2 class="price">₱120</h2>
+                <p>Moca</p>
+                <button>Add To Cart</button>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="pic">
+                <img src="/images/coffees/caramel.png" style="width: 6rem;" />
+              </div>
+              <div class="info">
+                <h2 class="price">₱220</h2>
+                <p>Caramel</p>
+                <button>Add To Cart</button>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="pic">
+                <img src="/images/coffees/americano.png" style="width: 6rem;" />
+              </div>
+              <div class="info">
+                <h2 class="price">₱100</h2>
+                <p>Americano</p>
+                <button>Add To Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>
