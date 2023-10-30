@@ -1,5 +1,5 @@
 <script>
-  import ProductCard from '$lib/components/ProductCard.svelte'
+  import ProductCard from '$lib/components/shared/ProductCard.svelte'
 
   const topProducts = [ {
       name: 'Mocha',
