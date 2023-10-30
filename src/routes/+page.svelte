@@ -43,7 +43,7 @@
     <div class="flex items-center justify-between gap-2">
       <input class="input" type="text" placeholder="Search product" />
 
-      <button class="btn-icon variant-filled-secondary">
+      <button disabled class="btn-icon variant-filled-secondary">
         <i class="far fa-angle-left"></i>
       </button>
 
