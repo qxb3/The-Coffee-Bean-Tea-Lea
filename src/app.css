@@ -5,7 +5,11 @@
 
 html,
 body {
-	@apply h-full overflow-hidden;
+	@apply h-full overflow-hidden hide-scrollbar;
+}
+
+::-webkit-scrollbar {
+	width: unset !important;
 }
 
 .header-color {
