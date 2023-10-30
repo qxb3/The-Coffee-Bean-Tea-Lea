@@ -33,21 +33,6 @@ const bestProducts = [
     price: 100,
     img: '/images/coffees/americano.png'
   },
-  {
-    text: 'Mocha',
-    price: 120,
-    img: '/images/coffees/mocha.png'
-  },
-  {
-    text: 'Caramel',
-    price: 220,
-    img: '/images/coffees/caramel.png'
-  },
-  {
-    text: 'Americano',
-    price: 100,
-    img: '/images/coffees/americano.png'
-  },
 ].sort(() => Math.random() < 0.5 ? 1 : 0)
 
 for (let i = 0; i < bestProducts.length; i++) {

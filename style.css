@@ -114,7 +114,7 @@ body {
 
 .products {
   background-color: #3d3936;
-  padding: 5rem 1rem 2rem 1rem;
+  padding: 5rem 1rem;
 }
 
 .products .container .items {
@@ -151,6 +151,20 @@ body {
   color: #ffffff;
   margin-top: 1rem;
   cursor: pointer;
+}
+
+.pagination-btn {
+  background-color: #B7A587;
+  padding: 0.4rem 0.8rem;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pagination-btn:disabled {
+  background-color: gray;
+  color: darkgray;
 }
 
 .footer {

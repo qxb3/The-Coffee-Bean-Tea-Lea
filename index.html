@@ -16,13 +16,13 @@
       <header class="header">
         <nav class="container">
           <div class="brand">
-            <i class="far fa-mug-hot fa-lg"></i>
+            <i style="font-size: 3ch;" class="far fa-mug-hot fa-lg"></i>
           </div>
 
           <ul class="links">
             <li><a href="/home">Home</a></li>
-            <li><a href="/about">Products</a></li>
-            <li><a href="/products">Products</a></li>
+            <li><a href="/menu">Menu</a></li>
+            <li><a href="/about">About</a></li>
             <li><a href="/resources">Resources</a></li>
           </ul>
 
@@ -45,7 +45,17 @@
 
       <div class="products">
         <div class="container">
-          <h3>Best Products</h3>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h3>Top Products</h3>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
+              <input style="border-radius: 12px; padding: 0.5rem; background-color: transparent; color: #ffffff; font-size: 2ch; border-style: solid; border-color: #8e7b71;" type="text" placeholder="Search Products" />
+              <button disabled class="pagination-btn"><i class="fas fa-chevron-left fa-2x"></i></button>
+              <button class="pagination-btn"><i class="fas fa-chevron-right fa-2x"></i></button>
+            </div>
+          </div>
 
           <div class="items"></div>
         </div>
