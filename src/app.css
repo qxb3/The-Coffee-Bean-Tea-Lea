@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+html,
+body {
+	@apply h-full overflow-hidden;
+}
+
+.header-color {
+  background: rgb(51,51,51);
+  background: linear-gradient(180deg, rgba(51,51,51,1) 0%, rgba(55,54,52,1) 15%, rgba(61,57,54,1) 30%, rgba(62,58,55,1) 50%, rgba(65,60,56,1) 70%, rgba(73,64,59,1) 100%);
+}
