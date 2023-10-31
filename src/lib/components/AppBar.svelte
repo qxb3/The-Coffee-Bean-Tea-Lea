@@ -66,10 +66,18 @@
     </div>
 
     <!-- Menu Header -->
-    <div class="relative py-16 px-8 block" class:hidden={$page.url.pathname !== "/menu"}>
+    <div class="py-16 px-8 block" class:hidden={$page.url.pathname !== "/menu"}>
       <div class="text-center max-w-xl mx-auto">
         <h1 class="h1 underline z-10">Menu</h1>
         <p class="p text-primary-400 mt-6">Savor an exquisite menu, where every dish embodies culinary perfection. Join us for an unforgettable dining experience that blends passion with exceptional taste.</p>
+      </div>
+    </div>
+
+    <!-- About Header -->
+    <div class="py-16 px-4 block" class:hidden={$page.url.pathname !== "/about"}>
+      <div class="text-center max-w-xl mx-auto">
+        <h1 class="h1 underline z-10">About Us</h1>
+        <p class="p text-primary-400 mt-6">Discover The Coffee Tea & Lea, where passion for exceptional taste meets a dedication to culinary perfection. Since our inception, we have been committed to curating an exquisite menu that embodies the essence of our craft. Each dish is a reflection of our devotion to the art of gastronomy, meticulously prepared with the finest, handpicked ingredients.</p>
       </div>
     </div>
   </svelte:fragment>
