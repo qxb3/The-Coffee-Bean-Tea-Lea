@@ -102,7 +102,7 @@
       <span>ICE BLENDED</span>
     </h2>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-14">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-14">
       {#each menuItems.iceBlended as iceBlended}
         <button on:click={() => openItemPopup(iceBlended, menuItems.iceBlendedImgPath)} class="card card-hover !bg-blue-600 p-4 divide-y">
           <div class="flex items-center justify-center pb-4">
