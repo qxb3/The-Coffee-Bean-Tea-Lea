@@ -48,9 +48,10 @@
   </svelte:fragment>
 
   <svelte:fragment slot="headline">
+    <!-- Home Header -->
     <div class="relative p-8 text-center block" class:hidden={$page.url.pathname !== "/"}>
-      <img class="absolute top-5 left-0 w-[26rem] scale-x-[-1] xl:block hidden" src="/ui/coffee-grinder.png" alt="Coffee Grinder" />
-      <img class="absolute top-[-1rem] right-0 w-[26rem] xl:block hidden" src="/ui/coffee-cup.png" alt="Coffee Cup" />
+      <img class="absolute top-5 left-0 w-[26rem] scale-x-[-1] xl:block hidden" src="/ui/home/coffee-grinder.png" alt="Coffee Grinder" />
+      <img class="absolute top-[-1rem] right-0 w-[26rem] xl:block hidden" src="/ui/home/coffee-cup.png" alt="Coffee Cup" />
 
       <h1 class="h1">The best quality coffee beans <br>for the best coffee brew</h1>
       <p class="p text-primary-400 mt-6">A cup is enough to give you energy <br>all day long</p>
@@ -58,6 +59,14 @@
         <span><i class="far fa-shopping-bag"></i></span>
         <span>Order Now</span>
       </button>
+    </div>
+
+    <!-- Menu Header -->
+    <div class="relative py-16 px-8 block" class:hidden={$page.url.pathname !== "/menu"}>
+      <div class="text-center max-w-xl mx-auto">
+        <h1 class="h1 underline z-10">Menu</h1>
+        <p class="p text-primary-400 mt-6">Savor an exquisite menu, where every dish embodies culinary perfection. Join us for an unforgettable dining experience that blends passion with exceptional taste.</p>
+      </div>
     </div>
   </svelte:fragment>
 </AppBar>
