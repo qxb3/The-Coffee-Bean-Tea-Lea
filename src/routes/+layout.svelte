@@ -14,10 +14,10 @@
   initializeStores()
 
   const links = [
-    { text: 'Home', path: '/' },
-    { text: 'Menu', path: '/menu' },
-    { text: 'About', path: '/about' },
-    { text: 'Resources', path: '/resources' }
+    { text: 'Home', path: '/', icon: 'far fa-home' },
+    { text: 'Menu', path: '/menu', icon: 'far fa-scroll' },
+    { text: 'About', path: '/about', icon: 'far fa-info-circle' },
+    { text: 'Resources', path: '/resources', icon: 'far fa-lightbulb' }
   ]
 
   const componentModalRegistry = {
