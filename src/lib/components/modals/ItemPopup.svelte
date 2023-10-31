@@ -20,7 +20,7 @@
       <img class="w-full max-h-[10rem]" src={imgPath + item.img} alt={item.name}>
     </div>
 
-    <div>
+    <div class="mt-8">
       <h2 class="h1">{item.name}</h2>
       <h1 class="h2">₱ {item.price}</h1>
       <p>- {item.description}</p>
