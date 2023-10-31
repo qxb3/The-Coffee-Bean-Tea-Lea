@@ -16,7 +16,7 @@
   </button>
 
   <div class="flex flex-col md:flex-row items-center gap-6">
-    <div class="grid items-center">
+    <div class="grid items-center mt-8 md:mt-0">
       <img class="w-full max-h-[10rem]" src={imgPath + item.img} alt={item.name}>
     </div>
 
