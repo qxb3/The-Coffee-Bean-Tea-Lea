@@ -62,7 +62,7 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-8 mt-14">
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-4 md:gap-8 mt-14">
     {#each topProductsPaginated as product}
       <div class="card p-4 divide-y">
         <div class="flex items-center justify-center pb-4">
