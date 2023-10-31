@@ -13,8 +13,15 @@
 
   initializeStores()
 
+  const links = [
+    { text: 'Home', path: '/' },
+    { text: 'Menu', path: '/menu' },
+    { text: 'About', path: '/about' },
+    { text: 'Resources', path: '/resources' }
+  ]
+
   const componentModalRegistry = {
-    navbar: { ref: NavBar }
+    navbar: { ref: NavBar, props: { links } }
   }
 </script>
 
@@ -25,7 +32,7 @@
 
 <AppShell>
   <svelte:fragment slot="pageHeader">
-    <AppBar />
+    <AppBar {links} />
   </svelte:fragment>
 
 	<slot />

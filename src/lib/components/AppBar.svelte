@@ -2,12 +2,7 @@
   import { AppBar, getModalStore } from '@skeletonlabs/skeleton'
   import { page } from '$app/stores'
 
-  const links = [
-    { text: 'Home', path: '/' },
-    { text: 'Menu', path: '/menu' },
-    { text: 'About', path: '/about' },
-    { text: 'Resources', path: '/resources' }
-  ]
+  export let links
 
   const modalStore = getModalStore()
 
