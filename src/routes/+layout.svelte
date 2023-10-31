@@ -1,10 +1,15 @@
 <script>
 	import '../app.css'
 
+  // AppShell Components
   import AppBar from '$lib/components/AppBar.svelte'
-  import NavBar from '$lib/components/modals/NavBar.svelte'
   import Footer from '$lib/components/Footer.svelte'
 
+  // Modals
+  import NavBar from '$lib/components/modals/NavBar.svelte'
+  import ItemPopup from '$lib/components/modals/ItemPopup.svelte'
+
+  // Skeleton Imports
   import {
     AppShell,
     Modal,
@@ -13,6 +18,7 @@
 
   initializeStores()
 
+  // AppBar & NavBar links
   const links = [
     { text: 'Home', path: '/', icon: 'far fa-home' },
     { text: 'Menu', path: '/menu', icon: 'far fa-scroll' },
@@ -20,8 +26,10 @@
     { text: 'Resources', path: '/resources', icon: 'far fa-lightbulb' }
   ]
 
+  // Modal component modals
   const componentModalRegistry = {
-    navbar: { ref: NavBar, props: { links } }
+    navbar: { ref: NavBar, props: { links } },
+    itemPopup: { ref: ItemPopup }
   }
 </script>
 
