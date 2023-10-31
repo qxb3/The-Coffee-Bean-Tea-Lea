@@ -1,5 +1,5 @@
 <script>
-  import { AppBar } from '@skeletonlabs/skeleton'
+  import { AppBar, getModalStore } from '@skeletonlabs/skeleton'
   import { page } from '$app/stores'
 
   const links = [
@@ -8,6 +8,15 @@
     { text: 'About', path: '/about' },
     { text: 'Resources', path: '/resources' }
   ]
+
+  const modalStore = getModalStore()
+
+  function openNavbar() {
+    modalStore.trigger({
+      type: 'component',
+      component: 'navbar'
+    })
+  }
 </script>
 
 <AppBar
@@ -41,7 +50,7 @@
         <i class="far fa-shopping-cart fa-2x"></i>
       </a>
 
-      <button class="btn-icon !bg-transparent md:hidden">
+      <button on:click={openNavbar} class="btn-icon !bg-transparent md:hidden">
         <i class="far fa-hamburger fa-2x"></i>
       </button>
     </div>
