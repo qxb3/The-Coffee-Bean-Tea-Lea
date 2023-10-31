@@ -14,6 +14,9 @@
 </script>
 
 <div class="card bg-surface-900 p-4 w-full">
+  <!-- Work around for auto focus thing in navbar -->
+  <button class="absolute top-[-999rem]"></button>
+
   <nav class="list-nav">
     <ul>
       {#each links as link}
