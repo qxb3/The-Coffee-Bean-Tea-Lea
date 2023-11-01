@@ -8,7 +8,7 @@
     },
     {
       img: '/ui/about/hiring.png',
-      headerText: 'Grow Your Career With Us',
+      headerText: 'Grow Your Career',
       description: 'Our passion for being Simply The Best™ in everything we do goes way deeper than the bottom of the cup. It’s really rooted in people.',
       buttonHref: '/apply-job',
     }
@@ -17,19 +17,17 @@
 
 {#each sections as section, i}
   {@const isEven = i % 2 === 0}
-  {@const imageOrder = isEven ? "1" : "2"}
-  {@const contentOrder = isEven ? "2" : "1"}
 
-  <section class="grid grid-cols-1 lg:grid-cols-2 pb-16 lg:pb-0">
-    <div style="background-image: url('{section.img}');" class="bg-[50%] bg-no-repeat bg-cover aspect-video order-1 lg:order-{imageOrder} z-0"></div>
+  <section class="flex flex-col pb-16 lg:pb-0" class:lg:flex-row={isEven} class:lg:flex-row-reverse={!isEven}>
+    <div style="background-image: url('{section.img}');" class="basis-auto lg:flex-1 bg-[50%] bg-no-repeat bg-cover aspect-video z-0"></div>
 
-    <div class="relative grid items-center px-8 order-2 lg:order-{contentOrder}">
+    <div class="basis-auto lg:flex-1 relative grid items-center px-8 lg:px-0">
       {#if isEven}
-        <svg class="absolute top-5 -left-16 z-10" width="128" height="128">
+        <svg class="absolute top-5 -left-16 z-10 hidden lg:block" width="128" height="128">
           <polygon class="fill-surface-900" points="0,64 128,0 128,128" />
         </svg>
       {:else}
-        <svg class="absolute top-5 -right-16 z-10" width="128" height="128">
+        <svg class="absolute top-5 -right-16 z-10 hidden lg:block" width="128" height="128">
           <polygon class="fill-surface-900" points="0,0 0,128 128,64" />
         </svg>
       {/if}
