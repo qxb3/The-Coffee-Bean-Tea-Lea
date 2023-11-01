@@ -80,5 +80,13 @@
         <p class="p text-primary-400 mt-6">Discover The Coffee Tea & Lea, where passion for exceptional taste meets a dedication to culinary perfection. Since our inception, we have been committed to curating an exquisite menu that embodies the essence of our craft. Each dish is a reflection of our devotion to the art of gastronomy, meticulously prepared with the finest, handpicked ingredients.</p>
       </div>
     </div>
+
+    <!-- Resources Header -->
+    <div class="py-16 px-4 block" class:hidden={$page.url.pathname !== "/resources"}>
+      <div class="text-center max-w-xl mx-auto">
+        <h1 class="h1 underline z-10">Resources</h1>
+        <p class="p text-primary-400 mt-6">Here you can find useful resources for our fellow coffee lovers!</p>
+      </div>
+    </div>
   </svelte:fragment>
 </AppBar>
