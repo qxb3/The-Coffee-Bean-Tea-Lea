@@ -6,7 +6,7 @@ export async function load({ params }) {
   try {
     const blog = await import(`../../../blogs/${slug}.md`)
 
-    return { blog: blog.default }
+    return { blog }
   } catch {
     throw error(404, 'Blog / Resource Not Found')
   }

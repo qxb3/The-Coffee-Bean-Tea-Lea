@@ -1,6 +1,9 @@
 <script>
   import { AppBar, getModalStore } from '@skeletonlabs/skeleton'
   import { page } from '$app/stores'
+  import { blogStore } from '$lib/stores.js'
+
+  console.log($blogStore.timeRead)
 
   export let links
 
@@ -81,12 +84,30 @@
       </div>
     </div>
 
-    <!-- Resources Header -->
-    <div class="py-16 px-4 block" class:hidden={$page.url.pathname !== "/resources"}>
-      <div class="text-center max-w-xl mx-auto">
-        <h1 class="h1 underline z-10">Resources</h1>
-        <p class="p text-primary-400 mt-6">Here you can find useful resources for our fellow coffee lovers!</p>
-      </div>
+    <!-- Resource Blog Header -->
+    <div class="py-4 px-4 block" class:hidden={!$blogStore}>
+      <ol class="breadcrumb-nonresponsive justify-center flex-col md:flex-row">
+        <li class="crumb">
+          <a href="/" class="anchor">Home</a>
+          <span class="crumb-separator" aria-hidden>/</span>
+        </li>
+
+        <li class="crumb">
+          <a href="/resources" class="anchor">Resources</a>
+          <span class="crumb-separator" aria-hidden>/</span>
+        </li>
+
+        <li class="line-clamp-1">{$blogStore.title}</li>
+      </ol>
+
+      <p class="mt-4 text-center text-xs">by {$blogStore.user}</p>
+      <p class="text-xs text-center">
+        <span>{$blogStore.date} • {$blogStore.timeRead} read •</span>
+        {#each $blogStore.tags ?? [] as tag}
+          <span class="badge bg-surface-700">{tag}</span>
+        {/each}
+      </p>
+
     </div>
   </svelte:fragment>
 </AppBar>
