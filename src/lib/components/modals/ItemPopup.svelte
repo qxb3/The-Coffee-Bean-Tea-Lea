@@ -5,7 +5,7 @@
   const modalStore = getModalStore()
   const toastStore = getToastStore()
 
-  const { item, imgPath } = $modalStore[0].meta
+  const { item } = $modalStore[0].meta
 
   function closeItemPopup() {
     modalStore.close()
@@ -26,7 +26,7 @@
 
   <div class="flex flex-col md:flex-row items-center gap-6">
     <div class="grid items-center mt-8 md:mt-0">
-      <img class="w-full max-h-[10rem]" src={imgPath + item.img} alt={item.name}>
+      <img class="w-full max-h-[10rem]" src={item.img} alt={item.name}>
     </div>
 
     <div class="mt-8">
