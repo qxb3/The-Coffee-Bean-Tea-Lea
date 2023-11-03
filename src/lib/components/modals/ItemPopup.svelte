@@ -1,12 +1,21 @@
 <script>
-  import { getModalStore } from '@skeletonlabs/skeleton'
+  import { getModalStore, getToastStore } from '@skeletonlabs/skeleton'
+  import { cartStore } from '$lib/stores.js'
 
   const modalStore = getModalStore()
+  const toastStore = getToastStore()
 
   const { item, imgPath } = $modalStore[0].meta
 
   function closeItemPopup() {
     modalStore.close()
+  }
+
+  function addToCart(item) {
+    cartStore.update((items) => [...items, item])
+
+    toastStore.trigger({ message: 'Added to cart!', background: 'variant-filled-success' })
+    closeItemPopup()
   }
 </script>
 
@@ -55,7 +64,7 @@
       </div>
 
       <div class="mt-12">
-        <button class="btn variant-filled-primary">
+        <button on:click={() => addToCart(item)} class="btn variant-filled-primary">
           <span>
             <i class="fas fa-cart-plus"></i>
           </span>

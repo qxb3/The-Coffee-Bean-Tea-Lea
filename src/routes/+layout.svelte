@@ -13,6 +13,7 @@
   import {
     AppShell,
     Modal,
+    Toast,
     initializeStores
   } from '@skeletonlabs/skeleton'
 
@@ -37,6 +38,8 @@
   components={componentModalRegistry}
   position="items-start"
 />
+
+<Toast />
 
 <AppShell>
   <svelte:fragment slot="pageHeader">
