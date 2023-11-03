@@ -1,5 +1,6 @@
 <script>
   import { getModalStore } from '@skeletonlabs/skeleton'
+  import Item from '$lib/components/shared/Item.svelte'
 
   const modalStore = getModalStore()
 
@@ -213,16 +214,7 @@
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-14">
       {#each menuItems.coffees as coffee}
-        <button on:click={() => openItemPopup(coffee)} class="card card-hover !bg-secondary-900 p-4 divide-y">
-          <div class="flex items-center justify-center pb-4">
-            <img class="w-full max-h-[6rem] object-contain" src={coffee.img} alt={coffee.name}>
-          </div>
-
-          <div class="pt-4 text-start">
-            <h2 class="h2">₱ {coffee.price}</h2>
-            <h3 class="h3">{coffee.name}</h3>
-          </div>
-        </button>
+        <Item {...coffee} background="bg-secondary-900" openItemPopup={true} />
       {/each}
     </div>
   </section>
@@ -235,16 +227,7 @@
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-14">
       {#each menuItems.teas as tea}
-        <button on:click={() => openItemPopup(tea)} class="card card-hover !bg-success-900 p-4 divide-y">
-          <div class="flex items-center justify-center pb-4">
-            <img class="w-full max-h-[6rem] object-contain" src={tea.img} alt={tea.name}>
-          </div>
-
-          <div class="pt-4 text-start">
-            <h2 class="h2">₱ {tea.price}</h2>
-            <h3 class="h3">{tea.name}</h3>
-          </div>
-        </button>
+        <Item {...tea} background="bg-success-900" openItemPopup={true} />
       {/each}
     </div>
   </section>
@@ -257,16 +240,7 @@
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 mt-14">
       {#each menuItems.iceBlended as iceBlended}
-        <button on:click={() => openItemPopup(iceBlended)} class="card card-hover !bg-blue-600 p-4 divide-y">
-          <div class="flex items-center justify-center pb-4">
-            <img class="w-full max-h-[6rem] object-contain" src={iceBlended.img} alt={iceBlended.name}>
-          </div>
-
-          <div class="pt-4 text-start">
-            <h2 class="h2">₱ {iceBlended.price}</h2>
-            <h3 class="h3">{iceBlended.name}</h3>
-          </div>
-        </button>
+        <Item {...iceBlended} background="bg-blue-600" openItemPopup={true} />
       {/each}
     </div>
   </section>

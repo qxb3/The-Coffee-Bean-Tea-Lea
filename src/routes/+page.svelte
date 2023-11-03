@@ -1,4 +1,6 @@
 <script>
+  import Item from '$lib/components/shared/Item.svelte'
+
   const topProducts = [
     { name: 'Mocha', price: 80, description: 'A rich and creamy blended beverage that combines coffee and chocolate.', type: 'iceBlended', img: '/ice-blended/mocha.png' },
     { name: 'Vanilla', price: 80, description: 'A smooth and sweet blended drink infused with vanilla flavor.', type: 'iceBlended', img: '/ice-blended/vanilla.png' },
@@ -64,16 +66,7 @@
 
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-4 md:gap-8 mt-14">
     {#each topProductsPaginated as product}
-      <div class="card p-4 divide-y">
-        <div class="flex items-center justify-center pb-4">
-          <img class="w-full max-h-[6rem] object-contain" src={product.img} alt={product.name}>
-        </div>
-
-        <div class="pt-4 text-start">
-          <h2 class="h2">₱ {product.price}</h2>
-          <h3 class="h3">{product.name}</h3>
-        </div>
-      </div>
+      <Item {...product} openItemPopup={true} />
     {/each}
   </div>
 </div>
