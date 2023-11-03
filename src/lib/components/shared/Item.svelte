@@ -30,14 +30,20 @@
   on:click={openPopup}
   class:card-hover={openItemPopup}
   class:cursor-default={!openItemPopup}
-  class="card !{background} p-4 divide-y"
+  class="card !{background}"
 >
-  <div class="flex items-center justify-center pb-4">
-    <img class="w-full max-h-[6rem] object-contain" src={img} alt={name}>
+  <slot name="heading" />
+
+  <div class="p-4 divide-y">
+    <div class="flex items-center justify-center pb-4">
+      <img class="w-full max-h-[6rem] object-contain" src={img} alt={name}>
+    </div>
+
+    <div class="pt-4 text-start">
+      <h2 class="h2">₱ {price}</h2>
+      <h3 class="h3">{name}</h3>
+    </div>
   </div>
 
-  <div class="pt-4 text-start">
-    <h2 class="h2">₱ {price}</h2>
-    <h3 class="h3">{name}</h3>
-  </div>
+  <slot name="footer" />
 </button>
