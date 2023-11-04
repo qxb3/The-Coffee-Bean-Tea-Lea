@@ -32,12 +32,14 @@
   {#each timeline as { date, description, img }, i}
     {@const isEven = i % 2 === 0}
 
-    <div class="grid grid-cols-3">
-      <div class="grid items-center order-1" class:!order-3={isEven}>
+    <div class="grid grid-cols-1 sm:grid-cols-3">
+      <!-- Image -->
+      <div class="grid items-center order-1" class:sm:order-3={isEven}>
         <img src={img} alt="">
       </div>
 
-      <div class="grid grid-rows-[1fr_auto_1fr] gap-4 items-center px-4 order-2 h-96">
+      <!-- Midle Line -->
+      <div class="hidden sm:grid grid-rows-[1fr_auto_1fr] gap-4 items-center px-4 order-2 sm:h-[40rem]">
         <div class="mx-auto w-1 h-full bg-secondary-500 rounded-t-md" class:invisible={i === 0}></div>
 
         <div class="grid items-center grid-cols-[1fr_auto_1fr] gap-4">
@@ -49,12 +51,17 @@
         <div class="mx-auto w-1 h-full bg-secondary-500 rounded-md"></div>
       </div>
 
-      <div class="grid items-center order-3" class:!order-1={isEven}>
-        <div class="max-w-md" class:text-end={isEven}>
+      <!-- Text -->
+      <div class="grid items-center order-3 my-8 sm:my-0" class:!order-1={isEven}>
+        <div class="max-w-md" class:sm:text-end={isEven}>
           <h1 class="h1 text-secondary-500">{date}</h1>
           <p class="mt-2">{description}</p>
         </div>
       </div>
+
+      {#if i > 0}
+        <div class="w-full h-[1px] bg-primary-500 mb-8 block sm:hidden"></div>
+      {/if}
     </div>
   {/each}
 
