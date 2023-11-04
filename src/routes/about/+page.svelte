@@ -23,12 +23,12 @@
 
     <div class="basis-auto lg:flex-1 relative grid items-center px-8 lg:px-0">
       {#if isEven}
-        <svg class="absolute top-5 -left-16 z-10 hidden lg:block" width="128" height="128">
-          <polygon class="fill-surface-900" points="0,64 128,0 128,128" />
+        <svg class="absolute top-5 -left-24 z-10 hidden lg:block" width="128" height="128">
+          <polygon class="fill-surface-900" points="64,64 128,0 128,128" />
         </svg>
       {:else}
-        <svg class="absolute top-5 -right-16 z-10 hidden lg:block" width="128" height="128">
-          <polygon class="fill-surface-900" points="0,0 0,128 128,64" />
+        <svg class="absolute top-5 -right-24 z-10 hidden lg:block" width="128" height="128">
+          <polygon class="fill-surface-900" points="0,0 0,128 64,64" />
         </svg>
       {/if}
 
