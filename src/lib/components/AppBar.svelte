@@ -28,7 +28,7 @@
     <i class="far fa-mug-hot fa-2x"></i>
   </svelte:fragment>
 
-  <ul class="gap-12 md:flex hidden">
+  <ul class="gap-12 sm:flex hidden">
     {#each links as { text, path }}
       <li class="text-lg flex flex-col items-center justify-center">
         <a href={path}>{text}</a>
@@ -42,17 +42,17 @@
 
   <svelte:fragment slot="trail">
     <div class="grid items-center">
-      <div class="relative">
+      <div class="hidden sm:block sm:relative">
         {#if $cartStore.length > 0}
           <div class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-white"></div>
         {/if}
 
-        <a href="/cart" class="btn-icon !bg-transparent md:block hidden">
+        <a href="/cart" class="btn-icon !bg-transparent">
           <i class="far fa-shopping-cart fa-2x"></i>
         </a>
       </div>
 
-      <button on:click={openNavbar} class="btn-icon !bg-transparent md:hidden">
+      <button on:click={openNavbar} class="btn-icon !bg-transparent sm:hidden">
         <i class="far fa-hamburger fa-2x"></i>
       </button>
     </div>
