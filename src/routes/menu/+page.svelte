@@ -1,8 +1,5 @@
 <script>
-  import { getModalStore } from '@skeletonlabs/skeleton'
   import Item from '$lib/components/shared/Item.svelte'
-
-  const modalStore = getModalStore()
 
   const menuItems = {
     coffees: [
@@ -205,7 +202,7 @@
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-14">
       {#each menuItems.coffees as coffee}
-        <Item {...coffee} background="bg-secondary-900" openItemPopup={true} />
+        <Item {...coffee} background="!bg-secondary-900" openItemPopup={true} />
       {/each}
     </div>
   </section>
@@ -218,7 +215,7 @@
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-14">
       {#each menuItems.teas as tea}
-        <Item {...tea} background="bg-success-900" openItemPopup={true} />
+        <Item {...tea} background="!bg-success-900" openItemPopup={true} />
       {/each}
     </div>
   </section>
@@ -231,7 +228,7 @@
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-4 mt-14">
       {#each menuItems.iceBlended as iceBlended}
-        <Item {...iceBlended} background="bg-blue-600" openItemPopup={true} />
+        <Item {...iceBlended} background="!bg-blue-600" openItemPopup={true} />
       {/each}
     </div>
   </section>

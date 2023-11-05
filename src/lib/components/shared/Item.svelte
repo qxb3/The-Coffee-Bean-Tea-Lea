@@ -7,7 +7,7 @@
   export let type
   export let img
 
-  export let background = 'bg-surface-900'
+  export let background = '!bg-surface-900'
   export let openItemPopup = false
 
   const modalStore = getModalStore()
@@ -28,9 +28,9 @@
 
 <button
   on:click={openPopup}
+  class="card {background}"
   class:card-hover={openItemPopup}
   class:cursor-default={!openItemPopup}
-  class="card !{background}"
 >
   <slot name="heading" />
 
