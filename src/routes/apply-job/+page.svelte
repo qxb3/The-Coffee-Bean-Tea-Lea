@@ -7,10 +7,11 @@
       town, position, resume, privacyPolicy
 
   let fullNameErr, emailErr, phoneErr,
-      townErr, positionErr, resumeErr, privacyPolicyErr
+      townErr, positionErr, privacyPolicyErr
 
   function submit() {
-    if (!fullName || !email || !phone || !town || !position || !resume || !privacyPolicy) {
+    if (!fullName || !email || !phone || !town || !position || !privacyPolicy) {
+      console.log(fullName, email, phone, town, position, privacyPolicy)
       toastStore.trigger({
         message: 'Please fill-up missing fields',
         background: "bg-error-500"
@@ -22,8 +23,18 @@
     if (!phone) return phoneErr = true
     if (!town) return townErr = true
     if (!position) return positionErr = true
-    if (!resume[0]) return resumeErr = true
     if (!privacyPolicy) return privacyPolicyErr = true
+
+    fullName = '', email = '', phone = '',
+      town = '', position = '', resume = '', privacyPolicy = ''
+
+    fullNameErr = false, emailErr = false, phoneErr = false,
+      townErr = false, positionErr = false, privacyPolicyErr = false
+
+    toastStore.trigger({
+      message: 'Your application has been sent',
+      background: "bg-success-500"
+    })
   }
 </script>
 
@@ -92,7 +103,7 @@
     </label>
 
     <label class="label pt-4">
-      <input bind:value={privacyPolicy} class="checkbox" class:input-error={privacyPolicyErr} type="checkbox" />
+      <input bind:checked={privacyPolicy} class="checkbox" class:input-error={privacyPolicyErr} type="checkbox" />
       <span>
         By clicking submit, you agree to our Privacy Policy. The Coffee Bean and Tea Leaf® will use your personal data to help us respond and contact you regarding your job application. For more information on how we use your data.
         <span class="text-error-500">*</span>
