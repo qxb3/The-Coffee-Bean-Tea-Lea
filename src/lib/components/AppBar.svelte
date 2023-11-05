@@ -1,7 +1,7 @@
 <script>
   import { AppBar, getModalStore } from '@skeletonlabs/skeleton'
   import { page } from '$app/stores'
-  import { blogStore } from '$lib/stores.js'
+  import { blogStore, cartStore } from '$lib/stores.js'
 
   export let links
 
@@ -42,9 +42,15 @@
 
   <svelte:fragment slot="trail">
     <div class="grid items-center">
-      <a href="/cart" class="btn-icon !bg-transparent md:block hidden">
-        <i class="far fa-shopping-cart fa-2x"></i>
-      </a>
+      <div class="relative">
+        {#if $cartStore.length > 0}
+          <div class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-white"></div>
+        {/if}
+
+        <a href="/cart" class="btn-icon !bg-transparent md:block hidden">
+          <i class="far fa-shopping-cart fa-2x"></i>
+        </a>
+      </div>
 
       <button on:click={openNavbar} class="btn-icon !bg-transparent md:hidden">
         <i class="far fa-hamburger fa-2x"></i>
