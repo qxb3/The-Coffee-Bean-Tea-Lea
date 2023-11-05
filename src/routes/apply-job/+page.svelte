@@ -1,30 +1,59 @@
+<script>
+  import { FileButton, getToastStore } from '@skeletonlabs/skeleton'
+
+  const toastStore = getToastStore()
+
+  let fullName, email, phone,
+      town, position, resume, privacyPolicy
+
+  let fullNameErr, emailErr, phoneErr,
+      townErr, positionErr, resumeErr, privacyPolicyErr
+
+  function submit() {
+    if (!fullName || !email || !phone || !town || !position || !resume || !privacyPolicy) {
+      toastStore.trigger({
+        message: 'Please fill-up missing fields',
+        background: "bg-error-500"
+      })
+    }
+
+    if (!fullName) return fullNameErr = true
+    if (!email) return emailErr = true
+    if (!phone) return phoneErr = true
+    if (!town) return townErr = true
+    if (!position) return positionErr = true
+    if (!resume[0]) return resumeErr = true
+    if (!privacyPolicy) return privacyPolicyErr = true
+  }
+</script>
+
 <div class="container p-8">
   <h1 class="h1">Apply Now</h1>
 
-  <form class="mt-12 space-y-4" action="">
+  <form on:submit={submit} class="mt-12 space-y-4">
     <label class="label">
-      <span class="h5">Full Name</span>
-      <input class="input" type="text" placeholder="Full Name" />
+      <span class="h5">Full Name <span class="text-error-500">*</span></span>
+      <input bind:value={fullName} class="input" class:input-error={fullNameErr} type="text" placeholder="Full Name" />
     </label>
 
     <label class="label">
-      <span class="h5">Email</span>
-      <input class="input" type="text" placeholder="Email Adress" />
+      <span class="h5">Email <span class="text-error-500">*</span></span>
+      <input bind:value={email} class="input" class:input-error={emailErr} type="text" placeholder="Email Adress" />
     </label>
 
     <label class="label">
-      <span class="h5">Mobile Number</span>
-      <input class="input" type="text" placeholder="i.e +6312345678" />
+      <span class="h5">Mobile Number <span class="text-error-500">*</span></span>
+      <input bind:value={phone} class="input" class:input-error={phoneErr} type="text" placeholder="i.e +6312345678" />
     </label>
 
     <label class="label">
-      <span class="h5">Town / City</span>
-      <input class="input" type="text" placeholder="Quezon City" />
+      <span class="h5">Town / City <span class="text-error-500">*</span></span>
+      <input bind:value={town} class="input" class:input-error={townErr} type="text" placeholder="Quezon City" />
     </label>
 
     <label class="label">
-      <span class="h5">Position</span>
-      <select class="select">
+      <span class="h5">Position <span class="text-error-500">*</span></span>
+      <select bind:value={position} class="select" class:input-error={positionErr}>
         <option value="" disabled="" selected="">Select your position</option>
         <option value="Commissary - Warehouse Manager"> Commissary - Warehouse Manager</option>
         <option value="Commissary - R&amp;D Supervisor"> Commissary - R&amp;D Supervisor</option>
@@ -56,16 +85,20 @@
       </select>
     </label>
 
-    <label class="label">
-      <span class="h5">Resume</span>
-      <input class="input" type="file" />
+    <label class="label" for="resume">
+      <span class="h5">Resume <span class="text-error-500">*</span></span>
+      <FileButton bind:files={resume} name="resume" width="w-full" button="btn btn-sm variant-filled-primary rounded-md">{resume ? resume[0].name : "Choose File"}</FileButton>
       <span class="text-xs text-zinc-500">Allowed file types: .pdf, .doc, .docx, .jpeg, .jpg, .png Max file size: 5mb</span>
     </label>
 
-    <label class="label pt-4 space-y-8">
-      <input class="checkbox" type="checkbox" />
-      <span>By clicking submit, you agree to our Privacy Policy. The Coffee Bean and Tea Leaf® will use your personal data to help us respond and contact you regarding your job application. For more information on how we use your data.</span>
-      <button class="btn variant-filled-primary rounded-md mt-4" type="submit">Send Application</button>
+    <label class="label pt-4">
+      <input bind:value={privacyPolicy} class="checkbox" class:input-error={privacyPolicyErr} type="checkbox" />
+      <span>
+        By clicking submit, you agree to our Privacy Policy. The Coffee Bean and Tea Leaf® will use your personal data to help us respond and contact you regarding your job application. For more information on how we use your data.
+        <span class="text-error-500">*</span>
+      </span>
     </label>
+
+    <button class="btn variant-filled-primary rounded-md mt-4" type="submit">Send Application</button>
   </form>
 </div>
