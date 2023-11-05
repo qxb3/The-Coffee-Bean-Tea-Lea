@@ -20,6 +20,9 @@
 </script>
 
 <div class="relative card bg-surface-900 p-4 max-w-screen-md">
+  <!-- Work around for auto focus thing in navbar -->
+  <button class="absolute top-[-999rem]"></button>
+
   <button on:click={closeItemPopup} class="btn btn-icon-sm absolute top-4 right-4">
     <i class="fa fa-times"></i>
   </button>
