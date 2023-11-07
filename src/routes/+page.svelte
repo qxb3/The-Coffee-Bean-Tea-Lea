@@ -66,7 +66,7 @@
 
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-4 md:gap-8 mt-14">
     {#each topProductsPaginated as product}
-      <Item {...product} openItemPopup={true} />
+      <Item {...product} addToCart={true} />
     {/each}
   </div>
 </div>

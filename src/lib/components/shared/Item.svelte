@@ -8,16 +8,16 @@
   export let img
 
   export let background = '!bg-surface-900'
-  export let openItemPopup = false
+  export let addToCart = false
 
   const modalStore = getModalStore()
 
-  function openPopup() {
-    if (!openItemPopup) return
+  function openAddToCart() {
+    if (!addToCart) return
 
     modalStore.trigger({
       type: 'component',
-      component: 'itemPopup',
+      component: 'addToCart',
       modalClasses: 'items-end',
       meta: {
         item: { name, price, description, type, img }
@@ -27,10 +27,10 @@
 </script>
 
 <button
-  on:click={openPopup}
+  on:click={openAddToCart}
   class="card {background}"
-  class:card-hover={openItemPopup}
-  class:cursor-default={!openItemPopup}
+  class:card-hover={addToCart}
+  class:cursor-default={!addToCart}
 >
   <slot name="heading" />
 
