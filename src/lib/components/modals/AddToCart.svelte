@@ -16,15 +16,10 @@
 
   function addToCart() {
     cartStore.update((items) => {
-      let existing = items[item.name]
+      const index = items.findIndex(v => v.name === item.name)
 
-      if (!existing) {
-        existing = { ...item, count: 0 }
-      }
-
-      existing.count += count
-
-      items[item.name] = existing
+      if (index !== -1) items[index].count = (items[index].count || 0) + count
+      else items.push({ ...item, count })
 
       return items
     })
