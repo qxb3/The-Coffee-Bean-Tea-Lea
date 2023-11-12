@@ -6,7 +6,7 @@ export const coffeeTheme = {
 		"--theme-font-family-heading": `Bebas Neue, sans-serif`,
 		"--theme-font-color-base": "0 0 0",
 		"--theme-font-color-dark": "255 255 255",
-		"--theme-rounded-base": "9999px",
+		"--theme-rounded-base": "8px",
 		"--theme-rounded-container": "8px",
 		"--theme-border-base": "1px",
 		// =~= Theme On-X Colors =~=
