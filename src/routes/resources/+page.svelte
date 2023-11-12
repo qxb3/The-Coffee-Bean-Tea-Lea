@@ -9,7 +9,7 @@
     <h1 class="h1 mb-8">Featured</h1>
 
     {#each blogs as blog}
-      <a href={blog.url} class="card card-hover flex flex-col sm:flex-row cursor-pointer my-6">
+      <a href={blog.url} class="card card-hover flex flex-col sm:flex-row cursor-pointer my-6 overflow-hidden">
         <div style="background-image: url('{blog.thumbnail}');" class="bg-[50%] sm:min-w-[12rem] md:min-w-[16rem] bg-no-repeat bg-cover aspect-video z-0"></div>
 
         <div class="p-4">
