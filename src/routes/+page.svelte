@@ -1,5 +1,6 @@
 <script>
   import Item from '$lib/components/shared/Item.svelte'
+  import Fuse from 'fuse.js'
 
   const topProducts = [
     { name: 'Mocha', price: 80, description: 'A rich and creamy blended beverage that combines coffee and chocolate.', type: 'iceBlended', img: '/ice-blended/mocha.png' },
@@ -20,11 +21,23 @@
     { name: 'Matcha Macchiatto', price: 75, description: 'A traditional macchiato infused with the delightful flavor of matcha.', type: 'coffee', img: '/coffees/matcha-macchiatto.png' }
   ]
 
+  const fuse = new Fuse(topProducts, { keys: ['name', 'description', 'price', 'type'] })
+  let mainProducts = topProducts
+  let searchQuery = ''
+
+  $: isSearching = searchQuery.length > 0
+  $: {
+    if (isSearching)
+      mainProducts = fuse.search(searchQuery).map(v => v.item)
+    else
+      mainProducts = topProducts
+  }
+
   let topProductsPage = 0
   const topProductsLimit = 8
   const lastPage = Math.ceil(topProducts.length / topProductsLimit) - 1
 
-  $: topProductsPaginated = topProducts.slice(
+  $: topProductsPaginated = mainProducts.slice(
     topProductsPage * topProductsLimit,
     topProductsPage * topProductsLimit + topProductsLimit
   )
@@ -52,17 +65,26 @@
     </div>
 
     <div class="flex items-center justify-between gap-2 mt-2 md:mt-0">
-      <input class="input" type="text" placeholder="Search product" />
+      <input bind:value={searchQuery} class="input" type="text" placeholder="Search product" />
 
-      <button on:click={topProductsPrev} disabled={inFirstPage} class="btn-icon variant-filled-secondary">
+      <button on:click={topProductsPrev} disabled={inFirstPage || isSearching} class="btn-icon variant-filled-secondary">
         <i class="far fa-angle-left"></i>
       </button>
 
-      <button on:click={topProductsNext} disabled={inLastPage} class="btn-icon variant-filled-secondary">
+      <button on:click={topProductsNext} disabled={inLastPage || isSearching} class="btn-icon variant-filled-secondary">
         <i class="far fa-angle-right"></i>
       </button>
     </div>
   </div>
+
+  {#if topProductsPaginated.length <= 0}
+    <div class="text-center py-24">
+      <h3 class="h3">Could not find top products :(</h3>
+      <p>
+        <span>Please check your search query</span>
+      </p>
+    </div>
+  {/if}
 
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-4 md:gap-8 mt-14">
     {#each topProductsPaginated as product}
