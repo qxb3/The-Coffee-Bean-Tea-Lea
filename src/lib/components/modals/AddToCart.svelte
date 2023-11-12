@@ -6,13 +6,28 @@
   const toastStore = getToastStore()
 
   const { item } = $modalStore[0].meta
+  let count = 1
+
+  $: item.count = count
 
   function closeItemPopup() {
     modalStore.close()
   }
 
-  function addToCart(item) {
-    cartStore.update((items) => [...items, item])
+  function addToCart() {
+    cartStore.update((items) => {
+      let existing = items[item.name]
+
+      if (!existing) {
+        existing = { ...item, count: 0 }
+      }
+
+      existing.count += count
+
+      items[item.name] = existing
+
+      return items
+    })
 
     toastStore.trigger({ message: 'Added to cart!', background: 'variant-filled-success' })
     closeItemPopup()
@@ -66,13 +81,19 @@
         {/if}
       </div>
 
-      <div class="mt-12">
-        <button on:click={() => addToCart(item)} class="btn variant-filled-primary">
+      <div class="flex items-center gap-4 mt-12">
+        <button on:click={addToCart} class="btn variant-filled-primary">
           <span>
             <i class="fas fa-cart-plus"></i>
           </span>
           <span>Add To Cart</span>
         </button>
+
+        <div class="grid grid-cols-3 card">
+          <button on:click={() => {if (count > 1) count -= 1}} class="btn btn-icon-sm rounded-none">-</button>
+          <p class="text-center my-auto">x{count}</p>
+          <button on:click={() => count += 1} class="btn btn-icon-sm rounded-none">+</button>
+        </div>
       </div>
     </div>
   </div>
