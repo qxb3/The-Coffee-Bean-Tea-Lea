@@ -6,7 +6,6 @@
   export let links
 
   const modalStore = getModalStore()
-
   function openNavbar() {
     modalStore.trigger({
       type: 'component',
@@ -44,7 +43,9 @@
     <div class="grid items-center">
       <div class="hidden sm:block sm:relative">
         {#if $cartStore.length > 0}
-          <div class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-white"></div>
+          <div class="absolute -top-2 -right-2 z-10">
+            <span class="badge variant-filled rounded-full">{$cartStore.length}</span>
+          </div>
         {/if}
 
         <a href="/cart" class="btn-icon !bg-transparent">
