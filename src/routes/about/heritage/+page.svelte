@@ -65,7 +65,11 @@
     </div>
   {/each}
 
-  <div class="text-center mt-12">
+  <div class="flex justify-center mt-6">
+    <img src="/logo.png" alt="">
+  </div>
+
+  <div class="text-center mt-6">
     <h1 class="h1 text-secondary-500">Today</h1>
     <p>Set out on a journey to take our brand to new heights worldwide.</p>
 
