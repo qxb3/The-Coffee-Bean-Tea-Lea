@@ -121,14 +121,22 @@
         <li class="line-clamp-1">{$blogStore?.title}</li>
       </ol>
 
-      <p class="mt-4 text-center text-xs">by {$blogStore?.user}</p>
       <p class="text-xs text-center">
         <span>{$blogStore?.date} • {$blogStore?.timeRead} read •</span>
         {#each $blogStore?.tags ?? [] as tag}
-          <span class="badge bg-surface-700">{tag}</span>
+          <span class="badge bg-surface-700 mr-2">{tag}</span>
         {/each}
       </p>
+      <p class="text-center text-xs underline">by {$blogStore?.user}</p>
+    </div>
 
+    <!-- Cart Header -->
+    <div class="py-16 px-4 block" class:hidden={$page.url.pathname !== "/cart"}>
+      <div class="text-center max-w-xl mx-auto">
+        <h1 class="h1 underline z-10">Cart</h1>
+        <p class="text-primary-400 mt-6">Here you can find your added cart items!</p>
+        <!-- <button class="btn variant-filled-primary">Purchace</button> -->
+      </div>
     </div>
   </svelte:fragment>
 </AppBar>
