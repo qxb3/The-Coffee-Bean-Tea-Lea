@@ -27,7 +27,7 @@
             <p class="text-xs">
               <span>{blog.date} • {blog.timeRead} read •</span>
               {#each blog.tags ?? [] as tag}
-                <span class="badge bg-surface-500">{tag}</span>
+                <span class="badge bg-surface-500 mr-2">{tag}</span>
               {/each}
             </p>
           </div>
