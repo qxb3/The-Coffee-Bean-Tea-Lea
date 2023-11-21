@@ -3,3 +3,4 @@ import { localStorageStore } from '@skeletonlabs/skeleton'
 
 export const blogStore = writable()
 export const cartStore = localStorageStore('cart', [])
+export const purchasesStore = localStorageStore('purchaces', [])

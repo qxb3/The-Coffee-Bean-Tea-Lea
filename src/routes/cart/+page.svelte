@@ -1,7 +1,7 @@
 <script>
   import Item from '$lib/components/shared/Item.svelte'
   import { getModalStore } from '@skeletonlabs/skeleton'
-  import { cartStore } from '$lib/stores.js'
+  import { cartStore, purchasesStore } from '$lib/stores.js'
 
   const modalStore = getModalStore()
 
@@ -11,37 +11,48 @@
   $: iceBlended = cartItems?.filter((item) => item.type === "iceBlended")
   $: cartStore.set(cartItems)
 
-  let isSelectAll = false
-  $: isAllCoffees = isSelectAll ?? false
-  $: isAllTeas = isSelectAll ?? false
-  $: isAllIceBlended = isSelectAll ?? false
-
   let selectedItems = []
+  let selectedItemsTotalPrice = 0
 
-  function addItem(event, item) {
-    if (event.target.checked)
-      selectedItems = [...selectedItems, item]
-    else
-      selectedItems = selectedItems.filter(v => v.name !== item.name)
+  $: {
+    const prices = selectedItems.map(item => item.price * item.count)
+    selectedItemsTotalPrice = prices.reduce((acc, current) => acc + current, 0)
   }
 
   function removeItem(item) {
     cartItems = cartItems.filter((v) => v.name !== item.name)
   }
 
-  function clearCart() {
+  function purchase() {
     modalStore.trigger({
-      type: 'confirm',
-      title: 'Please Confirm',
-      body: 'Are you sure to clear cart?',
-      response: (r) => {
-        if (r) cartItems = []
+      type: 'component',
+      component: 'purchase',
+      meta: {
+        selectedItems
+      },
+      response: (confirmPurchase) => {
+        if (confirmPurchase) {
+          cartItems = cartItems.filter(item => !selectedItems.some(selectedItem => item.name === selectedItem.name))
+        }
       }
     })
   }
 </script>
 
-<div class="container p-8 space-y-12">
+{#if $purchasesStore.length > 0}
+  <div class="bg-secondary-500 p-4">
+    <div class="container text-center">
+      <p>
+        <span>You currently have an active orders :D Check them</span>
+        <span class="underline">
+          <a href="/active-orders">here.</a>
+        </span>
+      </p>
+    </div>
+  </div>
+{/if}
+
+<div class="relative container p-8 space-y-12">
   {#if coffees.length <= 0 && teas.length <= 0 && iceBlended.length <= 0}
     <div class="text-center py-24">
       <h3 class="h3">You did not add any items yet :(</h3>
@@ -54,20 +65,16 @@
 
   {#if coffees.length > 0}
     <div>
-      <div class="flex items-center space-x-2">
-        <input bind:checked={isAllCoffees} class="checkbox" type="checkbox" />
-
-        <h3 class="h3">
-          <span><i class="far fa-coffee-togo"></i></span>
-          <span>COFFEES</span>
-        </h3>
-      </div>
+      <h3 class="h3">
+        <span><i class="far fa-coffee-togo"></i></span>
+        <span>COFFEES</span>
+      </h3>
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
         {#each coffees as coffee}
           <Item {...coffee}>
             <div class="flex items-center justify-between p-4" slot="heading">
-              <input on:change={(e) => addItem(e, coffee)} checked={isAllCoffees} class="checkbox" type="checkbox" />
+              <input bind:group={selectedItems} value={coffee} class="checkbox" type="checkbox" />
               <p class="text-tertiary-700">x{coffee.count}</p>
             </div>
 
@@ -82,20 +89,16 @@
 
   {#if teas.length > 0}
     <div>
-      <div class="flex items-center space-x-2">
-        <input bind:checked={isAllTeas} class="checkbox" type="checkbox" />
-
-        <h3 class="h3">
-          <span><i class="far fa-mug-hot"></i></span>
-          <span>TEAS</span>
-        </h3>
-      </div>
+      <h3 class="h3">
+        <span><i class="far fa-mug-hot"></i></span>
+        <span>TEAS</span>
+      </h3>
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
         {#each teas as tea}
           <Item {...tea}>
             <div class="flex items-center justify-between p-4" slot="heading">
-              <input on:change={(e) => addItem(e, tea)} checked={isAllTeas} class="checkbox" type="checkbox" />
+              <input bind:group={selectedItems} value={tea} class="checkbox" type="checkbox" />
               <p class="text-tertiary-700">x{tea.count}</p>
             </div>
 
@@ -110,20 +113,16 @@
 
   {#if iceBlended.length > 0}
     <div>
-      <div class="flex items-center space-x-2">
-        <input bind:checked={isAllIceBlended} class="checkbox" type="checkbox" />
-
-        <h3 class="h3">
-          <span><i class="far fa-mug-hot"></i></span>
-          <span>ICE BLENDED</span>
-        </h3>
-      </div>
+      <h3 class="h3">
+        <span><i class="far fa-mug-hot"></i></span>
+        <span>ICE BLENDED</span>
+      </h3>
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
         {#each iceBlended as blended}
           <Item {...blended}>
             <div class="flex items-center justify-between p-4" slot="heading">
-              <input on:change={(e) => addItem(e, blended)} checked={isAllIceBlended} class="checkbox" type="checkbox" />
+              <input bind:group={selectedItems} value={blended} class="checkbox" type="checkbox" />
               <p class="text-tertiary-700">x{blended.count}</p>
             </div>
 
@@ -136,21 +135,16 @@
     </div>
   {/if}
 
-  <div class="card flex items-center justify-between p-4">
-    <div class="flex items-center space-x-4">
-      <label>
-        <input bind:checked={isSelectAll} type="checkbox">
-        <span>Select All</span>
-      </label>
-      <button on:click={clearCart} class="btn btn-sm variant-filled-error">Clear Cart</button>
-    </div>
-
-    <div class="flex-1 px-24">
-      <button class="btn variant-filled-success w-full">Purchace</button>
-    </div>
-
-    <div class="text-center">
-      <p>Total (0 item): <span class="h2 text-error-500">₱0</span></p>
+  <div class="sticky bottom-8 card p-2 sm:p-4 w-full md:w-fit mx-auto md:ml-auto md:mx-0">
+    <div class="flex justify-around gap-8 items-center">
+      <div class="text-center">
+        <p class="h3 line-clamp-1">
+          <span>Total</span>
+          <span>({selectedItems.length} item):</span>
+          <span class="h2 text-error-500">₱{selectedItemsTotalPrice}</span>
+        </p>
+      </div>
+      <button on:click={purchase} disabled={selectedItems.length <= 0} class="btn variant-filled-success">Purchace</button>
     </div>
   </div>
 </div>

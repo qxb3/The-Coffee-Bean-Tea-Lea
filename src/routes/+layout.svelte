@@ -8,6 +8,7 @@
   // Modals
   import NavBar from '$lib/components/modals/NavBar.svelte'
   import AddToCart from '$lib/components/modals/AddToCart.svelte'
+  import Purchace from '$lib/components/modals/Purchace.svelte'
 
   // Skeleton Imports
   import {
@@ -30,7 +31,8 @@
   // Modal component modals
   const componentModalRegistry = {
     navbar: { ref: NavBar, props: { links } },
-    addToCart: { ref: AddToCart }
+    addToCart: { ref: AddToCart },
+    purchase: { ref: Purchace }
   }
 </script>
 
