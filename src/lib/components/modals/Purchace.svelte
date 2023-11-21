@@ -11,7 +11,7 @@
   const totalPrice = prices.reduce((acc, current) => acc + current, 0)
 
   function confirmPurchase() {
-    const randomID = [...Array(32)].map(() => Math.random().toString(36)[2]).join('')
+    const randomID = [...Array(16)].map(() => Math.random().toString(36)[2]).join('')
 
     purchasesStore.update((items) => [...items, {
       id: randomID,

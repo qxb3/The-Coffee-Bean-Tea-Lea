@@ -44,7 +44,7 @@
     <div class="container text-center">
       <p>
         <span>You currently have an active orders :D Check them</span>
-        <span class="underline">
+        <span class="underline text-success-500">
           <a href="/active-orders">here.</a>
         </span>
       </p>
@@ -58,7 +58,9 @@
       <h3 class="h3">You did not add any items yet :(</h3>
       <p>
         <span>Start carting items at</span>
-        <a class="underline text-success-500" href="/menu">menu.</a>
+        <span>
+          <a class="underline text-success-500" href="/menu">menu.</a>
+        </span>
       </p>
     </div>
   {/if}
