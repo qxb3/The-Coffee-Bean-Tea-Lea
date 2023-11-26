@@ -1,4 +1,5 @@
 <script>
+  import { goto } from '$app/navigation'
   import { getToastStore } from '@skeletonlabs/skeleton'
 
   export let data
@@ -47,10 +48,13 @@
       emailErr = false
       passwordErr = false
 
+      toastStore.clear()
       toastStore.trigger({
         message: 'Successfuly Logged in!',
         background: 'bg-success-500'
       })
+
+      goto('/')
     }
   }
 </script>
