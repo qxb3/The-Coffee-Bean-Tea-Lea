@@ -11,7 +11,6 @@
 
   function submit() {
     if (!fullName || !email || !phone || !town || !position || !privacyPolicy) {
-      console.log(fullName, email, phone, town, position, privacyPolicy)
       toastStore.trigger({
         message: 'Please fill-up missing fields',
         background: "bg-error-500"
