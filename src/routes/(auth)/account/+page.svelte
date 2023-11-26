@@ -18,6 +18,12 @@
       })
     }
 
+    toastStore.clear()
+    toastStore.trigger({
+      message: 'Successfuly Logout',
+      background: 'bg-success-500'
+    })
+
     goto('/')
   }
 </script>

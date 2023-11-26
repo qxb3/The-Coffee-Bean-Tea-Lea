@@ -1,6 +1,10 @@
 <script>
+  import { page } from '$app/stores'
+  import { goto } from '$app/navigation'
   import { getModalStore, getToastStore } from '@skeletonlabs/skeleton'
   import { cartStore } from '$lib/stores.js'
+
+  let { session } = $page.data
 
   const modalStore = getModalStore()
   const toastStore = getToastStore()
@@ -15,6 +19,16 @@
   }
 
   function addToCart() {
+    if (!session) {
+      closeItemPopup()
+      toastStore.trigger({
+        message: 'You need to login first',
+        background: 'bg-success-500'
+      })
+
+      return goto('/login')
+    }
+
     cartStore.update((items) => {
       const index = items.findIndex(v => v.name === item.name)
 

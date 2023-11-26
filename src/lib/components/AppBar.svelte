@@ -4,6 +4,7 @@
   import { blogStore, cartStore } from '$lib/stores.js'
 
   export let links
+  export let session
 
   const modalStore = getModalStore()
   function openNavbar() {
@@ -15,8 +16,7 @@
 </script>
 
 <AppBar
-  padding="p-8"
-  background="header-color"
+  padding="p-8" background="header-color"
   gridColumns="grid-cols-3"
   regionRowMain="container"
   regionRowHeadline="container max-w-screen-2xl"
@@ -41,16 +41,28 @@
 
   <svelte:fragment slot="trail">
     <div class="grid items-center">
-      <div class="hidden sm:block sm:relative">
-        {#if $cartStore.length > 0}
-          <div class="absolute -top-2 -right-2 z-10">
-            <span class="badge variant-filled rounded-full">{$cartStore.length}</span>
+      <div class="hidden sm:flex gap-2">
+        {#if !session}
+          <a href="/login" class="btn variant-filled-primary">Login</a>
+        {:else}
+          <div class="sm:relative">
+            {#if $cartStore.length > 0}
+              <div class="absolute -top-2 -right-2 z-10">
+                <span class="badge variant-filled rounded-full">{$cartStore.length}</span>
+              </div>
+            {/if}
+
+            <a href="/cart" class="btn-icon !bg-transparent">
+              <i class="far fa-shopping-cart fa-2x"></i>
+            </a>
+          </div>
+
+          <div>
+            <a href="/account" class="btn-icon">
+              <i class="fas fa-user fa-2x"></i>
+            </a>
           </div>
         {/if}
-
-        <a href="/cart" class="btn-icon !bg-transparent">
-          <i class="far fa-shopping-cart fa-2x"></i>
-        </a>
       </div>
 
       <button on:click={openNavbar} class="btn-icon !bg-transparent sm:hidden">
@@ -135,7 +147,6 @@
       <div class="text-center max-w-xl mx-auto">
         <h1 class="h1 underline z-10">Cart</h1>
         <p class="text-primary-400 mt-6">Here you can find your added cart items!</p>
-        <!-- <button class="btn variant-filled-primary">Purchace</button> -->
       </div>
     </div>
 
@@ -144,7 +155,30 @@
       <div class="text-center max-w-xl mx-auto">
         <h1 class="h1 underline z-10">Active Orders</h1>
         <p class="text-primary-400 mt-6">Thank you for buying with us! :D</p>
-        <!-- <button class="btn variant-filled-primary">Purchace</button> -->
+      </div>
+    </div>
+
+    <!-- Login Header -->
+    <div class="py-8 px-4 block" class:hidden={$page.url.pathname !== "/login"}>
+      <div class="text-center max-w-xl mx-auto">
+        <h1 class="h1 underline z-10">Login</h1>
+        <p class="text-primary-400 mt-6">Welcome Back! We're thrilled to have you back with us.</p>
+      </div>
+    </div>
+
+    <!-- SignUp Header -->
+    <div class="py-8 px-4 block" class:hidden={$page.url.pathname !== "/signup"}>
+      <div class="text-center max-w-xl mx-auto">
+        <h1 class="h1 underline z-10">SignUp</h1>
+        <p class="text-primary-400 mt-6">Please login to use extra features!</p>
+      </div>
+    </div>
+
+    <!-- Account Header -->
+    <div class="py-8 px-4 block" class:hidden={$page.url.pathname !== "/account"}>
+      <div class="text-center max-w-xl mx-auto">
+        <h1 class="h1 underline z-10">Account</h1>
+        <p class="text-primary-400 mt-6">Hello! {session?.user?.email}</p>
       </div>
     </div>
   </svelte:fragment>
