@@ -38,10 +38,7 @@
 
     const { data, error } = await supabase.auth.signUp({
       email,
-      password,
-      options: {
-        emailRedirectTo: `${location.origin}/login`
-      }
+      password
     })
 
     if (error) {
