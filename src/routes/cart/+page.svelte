@@ -44,7 +44,7 @@
     <div class="container text-center">
       <p>
         <span>You currently have an active orders :D Check them</span>
-        <span class="underline text-success-500">
+        <span class="link">
           <a href="/active-orders">here.</a>
         </span>
       </p>
@@ -59,7 +59,7 @@
       <p>
         <span>Start carting items at</span>
         <span>
-          <a class="underline text-success-500" href="/menu">menu.</a>
+          <a class="link" href="/menu">menu.</a>
         </span>
       </p>
     </div>

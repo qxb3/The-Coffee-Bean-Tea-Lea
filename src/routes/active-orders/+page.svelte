@@ -8,7 +8,7 @@
       <h3 class="h3">You have not order anything yet :(</h3>
       <p>
         <span>Check your</span>
-        <span class="underline text-success-500">
+        <span class="link">
           <a href="/cart">cart</a>
         </span>
         <span>and start purchasing! :D</span>
