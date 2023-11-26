@@ -1,6 +1,11 @@
 <script>
 	import '../app.css'
 
+  import { invalidate } from '$app/navigation'
+  import { onMount } from 'svelte'
+
+  export let data
+
   // AppShell Components
   import AppBar from '$lib/components/AppBar.svelte'
   import Footer from '$lib/components/Footer.svelte'
@@ -19,6 +24,18 @@
   } from '@skeletonlabs/skeleton'
 
   initializeStores()
+
+  let { supabase, session } = data
+  $: ({ supabase, session } = data)
+
+  onMount(() => {
+    const { data } = supabase.auth.onAuthStateChange((_, _session) => {
+      if (_session?.expires_at !== session?.expires_at) invalidate('supabase:auth')
+    })
+
+    return () => data.subscription.unsubscribe()
+  })
+
 
   // AppBar & NavBar links
   const links = [
