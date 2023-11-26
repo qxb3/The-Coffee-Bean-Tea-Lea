@@ -62,7 +62,7 @@
 
 <AppShell>
   <svelte:fragment slot="pageHeader">
-    <AppBar {links} />
+    <AppBar {links} {session} />
   </svelte:fragment>
 
 	<slot />
