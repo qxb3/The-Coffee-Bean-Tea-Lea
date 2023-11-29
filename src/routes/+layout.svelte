@@ -47,7 +47,7 @@
 
   // Modal component modals
   const componentModalRegistry = {
-    navbar: { ref: NavBar, props: { links } },
+    navbar: { ref: NavBar, props: { links, session } },
     addToCart: { ref: AddToCart },
     purchase: { ref: Purchace }
   }
