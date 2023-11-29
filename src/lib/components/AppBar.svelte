@@ -79,10 +79,10 @@
 
       <h1 class="h1">The best quality coffee beans <br>for the best coffee brew</h1>
       <p class="text-primary-400 mt-6">A cup is enough to give you energy <br>all day long</p>
-      <button class="btn sm:btn-lg variant-filled-primary mt-12">
+      <a href="/menu" class="btn sm:btn-lg variant-filled-primary mt-12">
         <span><i class="far fa-shopping-bag"></i></span>
         <span>Order Now</span>
-      </button>
+      </a>
     </div>
 
     <!-- Menu Header -->
