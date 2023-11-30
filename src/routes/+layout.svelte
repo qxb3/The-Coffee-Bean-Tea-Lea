@@ -1,7 +1,7 @@
 <script>
 	import '../app.css'
 
-  import { cartStore, purchasesStore } from '$lib/stores.js'
+  import { cartStore, cartLoading, purchasesStore, purchasesLoading } from '$lib/stores.js'
   import { invalidate } from '$app/navigation'
   import { onMount } from 'svelte'
 
@@ -34,7 +34,10 @@
 
   onMount(async () => {
     await fetchCart()
+    cartLoading.set(false)
+
     await fetchPurchaces()
+    purchasesLoading.set(false)
 
     const { data } = supabase.auth.onAuthStateChange((_, _session) => {
       if (_session?.expires_at !== session?.expires_at) invalidate('supabase:auth')
