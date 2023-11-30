@@ -1,6 +1,7 @@
 <script>
 	import '../app.css'
 
+  import { cartStore, purchasesStore } from '$lib/stores.js'
   import { invalidate } from '$app/navigation'
   import { onMount } from 'svelte'
 
@@ -20,15 +21,21 @@
     AppShell,
     Modal,
     Toast,
-    initializeStores
+    initializeStores,
+    getToastStore
   } from '@skeletonlabs/skeleton'
 
   initializeStores()
 
+  const toastStore = getToastStore()
+
   let { supabase, session } = data
   $: ({ supabase, session } = data)
 
-  onMount(() => {
+  onMount(async () => {
+    await fetchCart()
+    await fetchPurchaces()
+
     const { data } = supabase.auth.onAuthStateChange((_, _session) => {
       if (_session?.expires_at !== session?.expires_at) invalidate('supabase:auth')
     })
@@ -36,6 +43,45 @@
     return () => data.subscription.unsubscribe()
   })
 
+  async function fetchCart() {
+    const response = await fetch('/api/user/fetch-cart', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    const result = await response.json()
+
+    if (result.status !== 200) {
+      return toastStore.trigger({
+        message: result.message,
+        background: 'bg-error-500'
+      })
+    }
+
+    cartStore.set(result.items)
+  }
+
+  async function fetchPurchaces() {
+    const response = await fetch('/api/user/fetch-purchaces', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    const result = await response.json()
+
+    if (result.status !== 200) {
+      return toastStore.trigger({
+        message: result.message,
+        background: 'bg-error-500'
+      })
+    }
+
+    purchasesStore.set(result.purchaces)
+  }
 
   // AppBar & NavBar links
   const links = [
