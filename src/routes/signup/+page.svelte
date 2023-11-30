@@ -81,12 +81,7 @@
   {:else}
     <div class="text-center py-12 space-y-4">
       <h2 class="h2">Email Confirmation Has Been Sent!</h2>
-      <p>
-        <span>Confirm your email and</span>
-        <span class="link">
-          <a href="/login">login</a>
-        </span>
-      </p>
+      <p>Please confirm your email</p>
     </div>
   {/if}
 </div>
