@@ -38,7 +38,7 @@
     })
 
     if (session) {
-      await fetchCart().then(() => cartLoading.set(true))
+      await fetchCart()
       cartLoading.set(false)
 
       await fetchPurchaces()

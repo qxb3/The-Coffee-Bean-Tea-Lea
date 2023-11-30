@@ -11,10 +11,9 @@ export async function GET({ locals: { supabase, getSession } }) {
     })
   }
 
-  const { error: cartErr, data } = await supabase
+  let { error: cartErr, data } = await supabase
     .from('user_carts')
     .select()
-    .single()
 
   if (cartErr) {
     throw error(500, {
@@ -25,6 +24,6 @@ export async function GET({ locals: { supabase, getSession } }) {
 
   return json({
     status: 200,
-    ...data
+    ...data[0] || { items: [] }
   })
 }
