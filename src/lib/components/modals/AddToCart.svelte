@@ -1,10 +1,10 @@
 <script>
-  import { page } from '$app/stores'
   import { goto } from '$app/navigation'
+  import { page } from '$app/stores'
   import { getModalStore, getToastStore } from '@skeletonlabs/skeleton'
   import { cartStore } from '$lib/stores.js'
 
-  let { session } = $page.data
+  let { supabase, session } = $page.data
 
   const modalStore = getModalStore()
   const toastStore = getToastStore()
@@ -14,32 +14,32 @@
 
   $: item.count = count
 
-  function closeItemPopup() {
+  function closeAddToCart() {
     modalStore.close()
   }
 
-  function addToCart() {
+  async function addToCart() {
     if (!session) {
-      closeItemPopup()
+      closeAddToCart()
       toastStore.trigger({
         message: 'You need to login first',
-        background: 'bg-success-500'
+        background: 'bg-error-500'
       })
 
       return goto('/login')
     }
 
-    cartStore.update((items) => {
-      const index = items.findIndex(v => v.name === item.name)
+    const result = await cartStore.addToCart(item, count, { supabase, session })
 
-      if (index !== -1) items[index].count = (items[index].count || 0) + count
-      else items.push({ ...item, count })
-
-      return items
-    })
+    if (!result) {
+      return toastStore.trigger({
+        message: 'Something went wrong...',
+        error: 'bg-error-500'
+      })
+    }
 
     toastStore.trigger({ message: 'Added to cart!', background: 'variant-filled-success' })
-    closeItemPopup()
+    closeAddToCart()
   }
 </script>
 
@@ -47,7 +47,7 @@
   <!-- Work around for auto focus thing in navbar -->
   <button class="absolute top-[-999rem]"></button>
 
-  <button on:click={closeItemPopup} class="btn btn-icon-sm absolute top-4 right-4">
+  <button on:click={closeAddToCart} class="btn btn-icon-sm absolute top-4 right-4">
     <i class="fa fa-times"></i>
   </button>
 
