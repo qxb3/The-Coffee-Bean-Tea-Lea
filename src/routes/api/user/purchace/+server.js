@@ -20,19 +20,20 @@ export async function POST({ request, locals: { supabase, getSession } }) {
     })
   }
 
-  const randomID = [...Array(16)].map(() => Math.random().toString(36)[2]).join('')
+  const id = [...Array(16)].map(() => Math.random().toString(36)[2]).join('')
   const prices = selectedItems.map(item => item.price * item.count)
   const totalPrice = prices.reduce((acc, current) => acc + current, 0)
 
   const { error: purchaceErr, data } = await supabase
     .from('user_purchaces')
     .insert({
-      order_id: randomID,
-      user_id: session.user.id,
-      total_price: totalPrice,
-      items: selectedItems
+      id,
+      userId: session.user.id,
+      items: selectedItems,
+      totalPrice
     })
     .select()
+    .single()
 
   if (purchaceErr) {
     throw error(500, {

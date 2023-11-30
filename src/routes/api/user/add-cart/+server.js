@@ -11,7 +11,7 @@ export async function POST({ request, locals: { supabase, getSession } }) {
     })
   }
 
-  const { item, count} = await request.json()
+  const { item, count } = await request.json()
 
   const { data: existingCart } = await supabase
     .from('user_carts')
