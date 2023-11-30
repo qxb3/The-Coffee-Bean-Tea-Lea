@@ -1,6 +1,10 @@
 <script>
+  import { goto } from '$app/navigation'
+  import { page } from '$app/stores'
   import { getModalStore, getToastStore } from '@skeletonlabs/skeleton'
   import { cartStore } from '$lib/stores.js'
+
+  const { session } = $page.data
 
   const modalStore = getModalStore()
   const toastStore = getToastStore()
@@ -10,22 +14,45 @@
 
   $: item.count = count
 
-  function closeItemPopup() {
+  function closeAddToCart() {
     modalStore.close()
   }
 
-  function addToCart() {
-    cartStore.update((items) => {
-      const index = items.findIndex(v => v.name === item.name)
+  async function addToCart() {
+    if (!session) {
+      closeAddToCart()
+      toastStore.trigger({
+        message: 'You need to login first',
+        background: 'bg-error-500'
+      })
 
-      if (index !== -1) items[index].count = (items[index].count || 0) + count
-      else items.push({ ...item, count })
+      return goto('/login')
+    }
 
-      return items
+    const response = await fetch('/api/user/add-cart', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ item, count })
     })
 
-    toastStore.trigger({ message: 'Added to cart!', background: 'variant-filled-success' })
-    closeItemPopup()
+    const result = await response.json()
+
+    if (result.status !== 200) {
+      return toastStore.trigger({
+        message: result.message,
+        error: 'bg-error-500'
+      })
+    }
+
+    cartStore.set(result.items)
+    closeAddToCart()
+
+    toastStore.trigger({
+      message: 'Added to cart!',
+      background: 'variant-filled-success'
+    })
   }
 </script>
 
@@ -33,7 +60,7 @@
   <!-- Work around for auto focus thing in navbar -->
   <button class="absolute top-[-999rem]"></button>
 
-  <button on:click={closeItemPopup} class="btn btn-icon-sm absolute top-4 right-4">
+  <button on:click={closeAddToCart} class="btn btn-icon-sm absolute top-4 right-4">
     <i class="fa fa-times"></i>
   </button>
 

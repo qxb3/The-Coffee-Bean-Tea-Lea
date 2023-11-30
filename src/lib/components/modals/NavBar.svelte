@@ -4,6 +4,7 @@
 
   export let links
 
+  const session = $page.data.session
   const modalStore = getModalStore()
 
   $: activeLink = (path) => (path === $page.url.pathname ? '!bg-secondary-500' : '')
@@ -35,22 +36,28 @@
       </li>
 
       <li>
-        <a on:click={closeNavbar} href="/cart" class={activeLink("/cart")}>
-          <span class="badge">
-            <i class="far fa-shopping-cart fa-2x"></i>
-          </span>
-          <span class="flex-auto">Cart</span>
-        </a>
-      </li>
-    </ul>
+        {#if session}
+          <a on:click={closeNavbar} href="/account" class={activeLink("/account")}>
+            <span class="badge">
+              <i class="far fa-user fa-2x"></i>
+            </span>
+            <span class="flex-auto">Account</span>
+          </a>
 
-    <div class="mt-6">
-      <button on:click={closeNavbar} class="btn variant-filled-primary w-full">
-        <span>
-          <i class="far fa-times"></i>
-        </span>
-        <span>Close</span>
-      </button>
-    </div>
+          <a on:click={closeNavbar} href="/cart" class={activeLink("/cart")}>
+            <span class="badge">
+              <i class="far fa-shopping-cart fa-2x"></i>
+            </span>
+            <span class="flex-auto">Cart</span>
+          </a>
+        {:else}
+          <a href="/login" on:click={closeNavbar} class="btn variant-filled-primary w-full">
+            <span>
+              <i class="far fa-sign-in-alt"></i>
+            </span>
+            <span>Login</span>
+          </a>
+        {/if}
+      </li>
   </nav>
 </div>

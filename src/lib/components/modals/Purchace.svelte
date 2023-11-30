@@ -10,16 +10,27 @@
   const prices = selectedItems.map(item => item.price * item.count)
   const totalPrice = prices.reduce((acc, current) => acc + current, 0)
 
-  function confirmPurchase() {
-    const randomID = [...Array(16)].map(() => Math.random().toString(36)[2]).join('')
+  async function confirmPurchase() {
+    const response = await fetch('/api/user/purchace', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ selectedItems })
+    })
 
-    purchasesStore.update((items) => [...items, {
-      id: randomID,
-      totalPrice,
-      items: selectedItems
-    }])
+    const result = await response.json()
 
-    $modalStore[0].response(true)
+    if (result.status !== 200) {
+      return toastStore.trigger({
+        message: result.message,
+        background: 'bg-error-500'
+      })
+    }
+
+    purchasesStore.update((items) => [...items, result])
+
+    $modalStore[0].response(result)
     modalStore.close()
     toastStore.trigger({
       message: 'Successfuly Purchased!',

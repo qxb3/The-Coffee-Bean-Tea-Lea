@@ -1,6 +1,9 @@
 import { writable } from 'svelte/store'
-import { localStorageStore } from '@skeletonlabs/skeleton'
 
 export const blogStore = writable()
-export const cartStore = localStorageStore('cart', [])
-export const purchasesStore = localStorageStore('purchaces', [])
+
+export const cartStore = writable([])
+export const cartLoading = writable(true)
+
+export const purchasesStore = writable([])
+export const purchasesLoading = writable(true)
