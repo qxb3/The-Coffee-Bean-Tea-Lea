@@ -3,7 +3,7 @@ layout: blog
 title: The Ultimate Guide to Brewing the Perfect Cup of Coffee at Home
 description: Are you tired of spending a fortune on coffee at expensive cafes? Do you want to learn how to brew the perfect cup of coffee in the comfort of your own home? Look no further! In this ultimate guide, we will explore the art of coffee brewing, from selecting the right beans to mastering different brewing methods. Get ready to embark on a journey to coffee perfection
 thumbnail: https://images.pexels.com/photos/373639/pexels-photo-373639.jpeg?auto=compress&cs=tinysrgb&w=600
-user: Salimbagat, Justin Karl C.
+user: Justin Karl Salimbagat
 userProfile: /users/salimbagat.png
 date: Nov 3, 202
 timeRead: 5 min
