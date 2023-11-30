@@ -11,29 +11,38 @@ export async function DELETE({ request, locals: { supabase, getSession } }) {
     })
   }
 
-  const { item } = await request.json()
+  const { items: itemsToDelete } = await request.json()
+
+  if (!itemsToDelete) {
+    throw error(400, {
+      status: 400,
+      message: 'missing "items" in body'
+    })
+  }
 
   const { data: existingCart } = await supabase
     .from('user_carts')
     .select()
     .single()
 
-  let items = existingCart?.items ?? []
+  let cartItems = existingCart?.items ?? []
 
-  if (!items) {
+  if (!cartItems) {
     throw error(404, {
       status: 404,
       message: 'There is no item to delete'
     })
   }
 
-  items = items.filter((v) => v.name !== item.name)
+  cartItems = cartItems.filter(item =>
+    !itemsToDelete.some(itemToDelete => item.name === itemToDelete.name)
+  )
 
   const { error: cartErr, data } = await supabase
     .from('user_carts')
     .upsert({
       id: session.user.id,
-      items: items
+      items: cartItems
     })
     .select()
     .single()

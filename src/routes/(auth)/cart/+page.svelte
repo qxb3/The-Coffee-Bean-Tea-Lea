@@ -13,9 +13,7 @@
   $: coffees = cartItems?.filter((item) => item.type === "coffee")
   $: teas = cartItems?.filter((item) => item.type === "tea")
   $: iceBlended = cartItems?.filter((item) => item.type === "iceBlended")
-  $: {
-    cartStore.set(cartItems)
-  }
+  $: cartStore.set(cartItems)
 
   let loading = true
 
@@ -51,16 +49,15 @@
   async function removeItem(item) {
     loading = true
 
-    const response = await fetch('/api/user/delete-cart-item', {
+    const response = await fetch('/api/user/remove-cart-items', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ item })
+      body: JSON.stringify({ items: [item] })
     })
 
     const result = await response.json()
-    console.log(result)
 
     if (result.status !== 200) {
       return toastStore.trigger({
