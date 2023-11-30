@@ -33,15 +33,17 @@
   $: ({ supabase, session } = data)
 
   onMount(async () => {
-    await fetchCart()
-    cartLoading.set(false)
-
-    await fetchPurchaces()
-    purchasesLoading.set(false)
-
     const { data } = supabase.auth.onAuthStateChange((_, _session) => {
       if (_session?.expires_at !== session?.expires_at) invalidate('supabase:auth')
     })
+
+    if (session) {
+      await fetchCart().then(() => cartLoading.set(true))
+      cartLoading.set(false)
+
+      await fetchPurchaces()
+      purchasesLoading.set(false)
+    }
 
     return () => data.subscription.unsubscribe()
   })
