@@ -4,7 +4,7 @@
   import { getModalStore, getToastStore } from '@skeletonlabs/skeleton'
   import { cartStore } from '$lib/stores.js'
 
-  let { supabase, session } = $page.data
+  const { session } = $page.data
 
   const modalStore = getModalStore()
   const toastStore = getToastStore()
@@ -29,17 +29,30 @@
       return goto('/login')
     }
 
-    const result = await cartStore.addToCart(item, count, { supabase, session })
+    const response = await fetch('/api/user/add-cart', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ item, count })
+    })
 
-    if (!result) {
+    const result = await response.json()
+
+    if (result.status !== 200) {
       return toastStore.trigger({
-        message: 'Something went wrong...',
+        message: result.message,
         error: 'bg-error-500'
       })
     }
 
-    toastStore.trigger({ message: 'Added to cart!', background: 'variant-filled-success' })
+    cartStore.set(result.items)
     closeAddToCart()
+
+    toastStore.trigger({
+      message: 'Added to cart!',
+      background: 'variant-filled-success'
+    })
   }
 </script>
 
