@@ -27,7 +27,7 @@ export async function POST({ request, locals: { supabase, getSession } }) {
     else items.push({ ...item, count }) // Else push a new item
   }
 
-  const { error: cartsErr, data } = await supabase.from('user_carts')
+  const { error: cartErr, data } = await supabase.from('user_carts')
     .upsert({
       id: session.user.id,
       items: items
@@ -35,7 +35,7 @@ export async function POST({ request, locals: { supabase, getSession } }) {
     .select()
     .single()
 
-  if (cartsErr) {
+  if (cartErr) {
     throw error(500, {
       status: 500,
       message: 'Something went wrong...'
