@@ -75,20 +75,37 @@
     })
   }
 
-  // function purchase() {
-  //   modalStore.trigger({
-  //     type: 'component',
-  //     component: 'purchase',
-  //     meta: {
-  //       selectedItems
-  //     },
-  //     response: (confirmPurchase) => {
-  //       if (confirmPurchase) {
-  //         cartItems = cartItems.filter(item => !selectedItems.some(selectedItem => item.name === selectedItem.name))
-  //       }
-  //     }
-  //   })
-  // }
+  function purchase() {
+    modalStore.trigger({
+      type: 'component',
+      component: 'purchase',
+      meta: {
+        selectedItems
+      },
+      response: async (result) => {
+        if (result) {
+          const response = await fetch('/api/user/remove-cart-items', {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ items: selectedItems })
+          })
+
+          const result = await response.json()
+
+          if (result.status !== 200) {
+            return toastStore.trigger({
+              message: result.message,
+              background: 'bg-error-500'
+            })
+          }
+
+          cartItems = result.items
+        }
+      }
+    })
+  }
 </script>
 
 {#if loading}
@@ -203,7 +220,7 @@
             <span class="h2 text-error-500">₱{selectedItemsTotalPrice}</span>
           </p>
         </div>
-        <!-- <button on:click={purchase} disabled={selectedItems.length <= 0} class="btn variant-filled-success">Purchace</button> -->
+        <button on:click={purchase} disabled={selectedItems.length <= 0} class="btn variant-filled-success">Purchace</button>
       </div>
     </div>
   </div>
