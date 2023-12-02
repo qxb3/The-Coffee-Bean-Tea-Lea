@@ -21,7 +21,9 @@ const config = {
   ],
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter({
+      external: ['./static']
+    })
 	}
 };
 export default config;
