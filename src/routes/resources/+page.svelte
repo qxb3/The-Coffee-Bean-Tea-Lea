@@ -5,6 +5,10 @@
   const normalBlogs = data.blogs.filter(v => !v.featured)
 </script>
 
+<header>
+  <title>Resources</title>
+</header>
+
 <div class="container p-8 divide-y">
   <div class="pb-16">
     <h1 class="h1 mb-8">Featured</h1>

@@ -4,6 +4,10 @@
 
 </script>
 
+<header>
+  <title>Active Orders</title>
+</header>
+
 {#if $purchasesLoading}
   <Loading />
 {:else}

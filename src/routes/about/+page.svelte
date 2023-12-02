@@ -22,6 +22,10 @@
   ]
 </script>
 
+<header>
+  <title>About Us</title>
+</header>
+
 {#each sections as section, i}
   {@const isEven = i % 2 === 0}
 

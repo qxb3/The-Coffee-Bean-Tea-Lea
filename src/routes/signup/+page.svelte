@@ -59,6 +59,10 @@
   }
 </script>
 
+<header>
+  <title>Sign Up</title>
+</header>
+
 <div class="container max-w-xl px-8 py-12">
   {#if !confirmEmail}
     <form class="space-y-6">

@@ -193,6 +193,10 @@
   }
 </script>
 
+<header>
+  <title>Menu</title>
+</header>
+
 <div class="grid gap-16 container py-16 px-8">
   <section>
     <h2 class="h2 text-center">

@@ -58,6 +58,10 @@
   }
 </script>
 
+<header>
+  <title>The Coffee Bean Tea & Lea</title>
+</header>
+
 <div class="container py-16 px-4">
   <div class="flex flex-col md:flex-row items-center justify-between">
     <div>

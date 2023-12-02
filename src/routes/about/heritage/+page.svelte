@@ -28,6 +28,10 @@
   ]
 </script>
 
+<header>
+  <title>Heritage</title>
+</header>
+
 <div class="container p-8">
   {#each timeline as { date, description, img }, i}
     {@const isEven = i % 2 === 0}

@@ -81,6 +81,10 @@
   }
 </script>
 
+<header>
+  <title>Meet Our Team</title>
+</header>
+
 <div class="container p-8">
   <!-- Developers -->
   <div class="mt-16">

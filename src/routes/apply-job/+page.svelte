@@ -37,6 +37,10 @@
   }
 </script>
 
+<header>
+  <title>Apply For Job</title>
+</header>
+
 <div class="container p-8">
   <h1 class="h1">Apply Now</h1>
 

@@ -28,6 +28,10 @@
   }
 </script>
 
+<header>
+  <title>Account</title>
+</header>
+
 <div class="container p-8">
   <div class="space-y-6">
     <label class="label">

@@ -86,6 +86,10 @@
   }
 </script>
 
+<header>
+  <title>Cart</title>
+</header>
+
 {#if purchaces.length > 0}
   <div class="bg-secondary-500 p-4">
     <div class="container text-center">

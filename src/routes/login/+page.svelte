@@ -59,6 +59,10 @@
   }
 </script>
 
+<header>
+  <title>Login</title>
+</header>
+
 <div class="container max-w-xl px-8 py-12">
   <form class="space-y-6">
     <label class="label">
