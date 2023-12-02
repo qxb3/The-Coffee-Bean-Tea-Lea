@@ -40,7 +40,7 @@
       },
       {
         name: 'Lumido, Christian',
-        role: 'Database, Designer',
+        role: 'UI Designer',
         img: '/team/lumido.png'
       }
     ],
