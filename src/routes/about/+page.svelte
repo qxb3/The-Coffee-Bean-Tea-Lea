@@ -17,6 +17,7 @@
       headerText: 'Our Team',
       description: 'Meet our Team that makes this website possible!',
       buttonHref: '/about/our-team',
+      buttonText: 'Meet Them'
     },
   ]
 </script>
@@ -41,7 +42,7 @@
       <div class="max-w-xs lg:mx-auto mt-16 lg:mt-0">
         <h1 class="h1 text-5xl text-secondary-500">{section.headerText}</h1>
         <p class="text-md">{section.description}</p>
-        <a href={section.buttonHref} class="btn btn-md rounded-md variant-filled-primary mt-6">Learn More</a>
+<a href={section.buttonHref} class="btn btn-md rounded-md variant-filled-primary mt-6">{section.buttonText || "Learn More"}</a>
       </div>
     </div>
   </section>
