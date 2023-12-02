@@ -74,7 +74,7 @@
       },
       {
         name: 'Roca, Erwin',
-        role: 'Researcher',
+        role: 'Tasks',
         img: '/team/roca.png'
       }
     ]
