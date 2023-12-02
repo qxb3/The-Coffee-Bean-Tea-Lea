@@ -109,6 +109,15 @@
       </div>
     </div>
 
+    <!-- About > Heritage Header -->
+    <div class="py-16 px-4 block" class:hidden={$page.url.pathname !== "/about/our-team"}>
+      <div class="text-center max-w-xl mx-auto">
+        <h1 class="h1 underline z-10">Our Team</h1>
+        <p class="text-primary-400 mt-6">Meet our team that makes this website possible</p>
+      </div>
+    </div>
+
+
     <!-- Resources Header -->
     <div class="py-16 px-4 block" class:hidden={$page.url.pathname !== "/resources"}>
       <div class="text-center max-w-xl mx-auto">

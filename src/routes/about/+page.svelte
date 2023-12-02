@@ -11,7 +11,13 @@
       headerText: 'Grow Your Career',
       description: 'Our passion for being Simply The Best™ in everything we do goes way deeper than the bottom of the cup. It’s really rooted in people.',
       buttonHref: '/apply-job',
-    }
+    },
+    {
+      img: '/ui/about/team.png',
+      headerText: 'Our Team',
+      description: 'Meet our Team that makes this website possible!',
+      buttonHref: '/about/our-team',
+    },
   ]
 </script>
 
