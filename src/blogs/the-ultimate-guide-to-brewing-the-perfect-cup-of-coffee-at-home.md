@@ -5,7 +5,7 @@ description: Are you tired of spending a fortune on coffee at expensive cafes? D
 thumbnail: https://images.pexels.com/photos/373639/pexels-photo-373639.jpeg?auto=compress&cs=tinysrgb&w=600
 user: Justin Karl Salimbagat
 userProfile: /users/salimbagat.png
-date: Nov 3, 202
+date: Nov 3, 2023
 timeRead: 5 min
 featured: true
 tags: ["Guide"]

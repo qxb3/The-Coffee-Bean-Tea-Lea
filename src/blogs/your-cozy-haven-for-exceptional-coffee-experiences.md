@@ -3,8 +3,8 @@ layout: blog
 title: Your Cozy Haven for Exceptional Coffee Experiences!
 description: Discover a warm and inviting escape for coffee enthusiasts at The Coffee Bean & Tea Leaf. Our coffee haven promises more than just a cup; it's an immersive journey into the world of exceptional coffee.
 thumbnail: https://scontent.fmnl17-1.fna.fbcdn.net/v/t1.15752-9/400341291_1499939220549335_521651421302393181_n.png?stp=dst-png_p526x296&_nc_cat=108&ccb=1-7&_nc_sid=b65b05&efg=eyJpIjoiYiJ9&_nc_eui2=AeEFSMAUs8s_xLkEJPO9jMJeaDdGglnvX4ZoN0aCWe9fho2RV3wrx_HxYucY0-i84WXvrVTERD2Wo8d4Qn8bybv_&_nc_ohc=cmgiO1cdNTEAX9WUhRB&tn=GyeNJ_sY3Jb14Qom&_nc_ht=scontent.fmnl17-1.fna&oh=03_AdRFof7g7tHEHvb_9VDT0VUpF6_Yq7jk5LMTNjKvA42low&oe=65918BB6
-user: Adam Nuevo
-userProfile: /users/nuevo.png
+user: Winston Mendoza Bautista
+userProfile: /users/winston.png
 date: Dec 2, 2023
 timeRead: 6 min
 tags: ["Discover", "Promotion"]

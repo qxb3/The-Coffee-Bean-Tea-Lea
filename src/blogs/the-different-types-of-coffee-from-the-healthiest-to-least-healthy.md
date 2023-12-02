@@ -3,9 +3,9 @@ layout: blog
 title: 'The Different Types Of Coffee: From Healthies To Least Healthy'
 description: 'HEALTH BENEFITS OF COFFEE: To find the healthiest type of coffee, consider the coffee beans, preparation techniques, and add-ons (like milk and sugar) in each cup.'
 thumbnail: /blogs/ysa-simon/image1.png
-user: Hanna Camille Modelo
+user: Darlene Sofhia Modelo
 userProfile: /users/ysa-simon.png
-date: Dec 1, 202
+date: Dec 1, 2023
 timeRead: 8 min
 tags: ["Health", "Informative"]
 ---

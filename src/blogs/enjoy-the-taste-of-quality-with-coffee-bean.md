@@ -5,7 +5,7 @@ description: If you are a coffee connoisseur or even just a casual coffee drinke
 thumbnail: https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=600
 user: Mark Salupan
 userProfile: /users/salupan.png
-date: Nov 19, 202
+date: Nov 19, 2023
 timeRead: 5 min
 featured: true
 tags: ["Promotion", "CoffeeBean"]

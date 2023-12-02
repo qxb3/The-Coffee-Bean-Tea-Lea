@@ -5,7 +5,7 @@ description: The term "Seasonal Brews" encapsulates a diverse array of blends th
 thumbnail: /blogs/hanna-modelo/image1.png
 user: Hanna Camille Modelo
 userProfile: /users/hanna-modelo.png
-date: Nov 13, 202
+date: Nov 13, 2023
 timeRead: 10 min
 tags: ["Recommendations", "Guide"]
 ---

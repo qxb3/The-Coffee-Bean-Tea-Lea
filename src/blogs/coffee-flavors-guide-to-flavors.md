@@ -5,7 +5,7 @@ description: Coffee is more than a beverage, it's an experience that transcends 
 thumbnail: /blogs/sofhia-modelo/image1.png
 user: Darlene Sofhia Modelo
 userProfile: /users/sofhia-modelo.png
-date: Nov 25, 202
+date: Nov 25, 2023
 timeRead: 15 min
 tags: ["Guide"]
 ---
